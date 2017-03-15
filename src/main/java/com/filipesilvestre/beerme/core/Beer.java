@@ -9,7 +9,7 @@ import javax.persistence.*;
 @NamedQueries(
         {
                 @NamedQuery(
-                        name = "findAll",
+                        name = "findAllBeers",
                         query = "SELECT p FROM Beer p"
                 ),
                 @NamedQuery(
@@ -22,12 +22,16 @@ public class Beer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(name = "beer_name", nullable = false)
     private String beerName;
+
     @Column(name = "beer_style")
     private String beerStyle;
+
     @Column(name = "ibu")
     private int ibu;
+
     @Column(name = "alc_percent")
     private double alcPercent;
 

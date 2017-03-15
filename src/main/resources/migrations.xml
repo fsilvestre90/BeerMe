@@ -20,8 +20,28 @@
             <column name="ibu" type="int"/>
             <column name="alc_percent" type="double"/>
         </createTable>
+        <createTable tableName="brewery">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="brewery_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="BREWERY_BEERS">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="BREWERY_ID" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BEER_ID" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
     </changeSet>
     <changeSet author="filipesilvestre" id="add-data-external">
         <sqlFile path="beers.sql"/>
+        <sqlFile path="brewery.sql"/>
     </changeSet>
 </databaseChangeLog>
