@@ -1,0 +1,2 @@
+mvn clean install
+java -jar target/BeerMe-1.0-SNAPSHOT.jar db migrate config.yml

@@ -1,17 +1,11 @@
 package com.filipesilvestre.beerme.resources;
 
-import com.codahale.metrics.annotation.Timed;
-import com.filipesilvestre.beerme.core.Beer;
-import com.filipesilvestre.beerme.core.Brewery;
-import com.filipesilvestre.beerme.db.BreweryDAO;
-
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import java.util.List;
+import javax.ws.rs.Path;
 
 @Path("/brewery")
 public class BreweryService {
-    public BreweryService() {}
+    public BreweryService() {
+    }
 //
 //    @GET
 //    @Timed

@@ -27,9 +27,9 @@ public class BeerService {
         return beerDAO.findById(id);
     }
 
-    @GET
+    @DELETE
     @Timed
-    @Path("/remove")
+    @Path("/remove/{id}")
     @Produces(MediaType.TEXT_PLAIN)
     @UnitOfWork
     public String removeBeer(@PathParam("id") int id) {

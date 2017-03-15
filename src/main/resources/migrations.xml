@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
@@ -11,14 +11,17 @@
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="beerName" type="varchar(255)">
+            <column name="beer_name" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="beerStyle" type="varchar(255)">
+            <column name="beer_style" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="ibu" type="int"/>
-            <column name="alcPercent" type="double"/>
+            <column name="alc_percent" type="double"/>
         </createTable>
+    </changeSet>
+    <changeSet author="filipesilvestre" id="add-data-external">
+        <sqlFile path="beers.sql"/>
     </changeSet>
 </databaseChangeLog>

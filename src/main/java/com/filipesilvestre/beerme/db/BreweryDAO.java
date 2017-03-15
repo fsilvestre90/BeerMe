@@ -1,6 +1,5 @@
 package com.filipesilvestre.beerme.db;
 
-import com.filipesilvestre.beerme.core.Beer;
 import com.filipesilvestre.beerme.core.Brewery;
 
 import java.util.ArrayList;
