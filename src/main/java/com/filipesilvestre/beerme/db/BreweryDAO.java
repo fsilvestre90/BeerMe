@@ -39,6 +39,9 @@ public class BreweryDAO extends AbstractDAO<Brewery> {
     }
 
     public Brewery addBeer(int id, Beer beer) {
-        return new Brewery();
+        Brewery brewery = currentSession().get(Brewery.class, id);
+        brewery.getBeerList().add(beer);
+        currentSession().update(brewery);
+        return brewery;
     }
 }

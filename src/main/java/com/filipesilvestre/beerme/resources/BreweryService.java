@@ -37,7 +37,7 @@ public class BreweryService {
         return breweryDAO.findAll();
     }
 
-    @POST
+    @PUT
     @Timed
     @Path("/addBeer/{id}")
     @Produces(MediaType.APPLICATION_JSON)
