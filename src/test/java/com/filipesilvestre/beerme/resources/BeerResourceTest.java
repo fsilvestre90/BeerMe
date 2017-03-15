@@ -13,7 +13,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -103,5 +102,19 @@ public class BeerResourceTest {
         Response response = RULE.target("/beer/save").request().post(Entity.json(newBeer), Response.class);
 
         assertThat(response.getStatusInfo()).isEqualTo(Response.Status.OK);
+    }
+
+    @Test
+    public void updateBeer() {
+        Beer newBeer = new Beer(1, "Updated Beer", "Sour", 5, 150.0);
+
+        when(BEER_SERVICE.addBeer(newBeer)).thenReturn("Updated Beer with id=5");
+
+        Response response = RULE.target("/beer/save").request().post(Entity.json(newBeer), Response.class);
+        Beer updatedBeer = RULE.target("/beer/get/1").request().get(Beer.class);
+
+        assertThat(response.getStatusInfo()).isEqualTo(Response.Status.OK);
+        assertThat(updatedBeer.getBeerName()).isEqualTo("Updated Beer");
+        assertThat(updatedBeer.getAlcPercent()).isEqualTo(150.0);
     }
 }
