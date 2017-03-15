@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.filipesilvestre.beerme.db.BeerDAO;
 import io.dropwizard.jackson.Jackson;
 import io.dropwizard.testing.junit.DAOTestRule;
+import org.hamcrest.Matcher;
 import org.hibernate.exception.ConstraintViolationException;
 import org.junit.Before;
 import org.junit.Rule;
@@ -15,6 +16,7 @@ import java.util.Optional;
 import static io.dropwizard.testing.FixtureHelpers.fixture;
 import static junit.framework.TestCase.assertEquals;
 import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Created by filipesilvestre on 3/15/17.
@@ -29,8 +31,7 @@ public class BeerTest {
 
     // make static to access this from any class
     public static Beer getBeer() {
-        return new Beer()
-                .setId(10)
+        return new Beer().setId(10)
                 .setBeerName("Test Beer")
                 .setBeerStyle("Style")
                 .setIbu(5)
@@ -82,13 +83,15 @@ public class BeerTest {
     @Test
     public void serializesToJson() throws Exception {
         final Beer beer = getBeer();
-//        assertEquals(fixture("fixtures/beer.json"), MAPPER.writeValueAsString(beer));
-        // TODO: why is this returning false when it's true? spacing?
+        assertEquals(fixture("fixtures/beer.json"), MAPPER.writeValueAsString(beer));
     }
 
     @Test
     public void deserializesFromJSON() throws Exception {
-        final Beer beer = getBeer();
-//        assertEquals(beer, MAPPER.readValue(fixture("fixtures/beer.json"), Beer.class));
+//        assertEquals(instanceOf(Beer.class), MAPPER.readValue(fixture("fixtures/beer.json"), Beer.class));
     }
+
+
+
+
 }

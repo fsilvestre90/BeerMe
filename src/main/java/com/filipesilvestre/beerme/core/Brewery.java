@@ -3,6 +3,7 @@ package com.filipesilvestre.beerme.core;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -39,9 +40,19 @@ public class Brewery {
         return id;
     }
 
+    public Brewery setId(int id) {
+        this.id = id;
+        return this;
+    }
+
     @JsonProperty
     public String getBreweryName() {
         return breweryName;
+    }
+
+    public Brewery setBreweryName(String name) {
+        this.breweryName = name;
+        return this;
     }
 
     @JsonProperty
@@ -49,4 +60,8 @@ public class Brewery {
         return beerList;
     }
 
+    public Brewery setBeerList(ArrayList<Beer> beerList) {
+        this.beerList = beerList;
+        return this;
+    }
 }
