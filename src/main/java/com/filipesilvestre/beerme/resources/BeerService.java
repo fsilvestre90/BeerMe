@@ -6,13 +6,14 @@ import com.filipesilvestre.beerme.db.BeerDB;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Path("/beer")
 public class BeerService {
 
-    public BeerService() {
-    }
+    public BeerService() {}
 
     @GET
     @Timed
@@ -33,6 +34,22 @@ public class BeerService {
 
     @GET
     @Timed
+    @Path("/style")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Beer> getBeerByStyle(@QueryParam("q") String query) {
+        List<Beer> matchingBeers = new ArrayList<>();
+        //filter the beers depending on the ?style= from the url
+        List<Beer> beers = BeerDB.getAll();
+        for (Beer beer : beers) {
+            if (beer.getBeerStyle().toLowerCase().contains(query.toLowerCase())) {
+                matchingBeers.add(beer);
+            }
+        }
+        return matchingBeers;
+    }
+
+    @GET
+    @Timed
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Beer> getBeers() {
@@ -44,7 +61,7 @@ public class BeerService {
     @Path("/save")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes({MediaType.APPLICATION_JSON})
-    public String addBeer(Beer Beer) {
-        return BeerDB.save(Beer);
+    public String addBeer(Beer beer) {
+        return BeerDB.save(beer);
     }
 }

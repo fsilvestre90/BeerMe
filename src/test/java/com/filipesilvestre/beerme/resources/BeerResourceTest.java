@@ -10,8 +10,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -52,7 +54,7 @@ public class BeerResourceTest {
 
     @Test
     public void getBeerNotFound() {
-        int badId = 5;
+        int badId = 100;
         final Response response = RULE.target(String.format("/beer/get/%d", badId)).request().get();
 
         assertThat(response.getStatusInfo().getStatusCode()).isEqualTo(Response.Status.NO_CONTENT.getStatusCode());
@@ -69,5 +71,37 @@ public class BeerResourceTest {
                 });
 
         assertThat(response).containsAll(beers);
+    }
+
+    @Test
+    public void getStyleNotFound() {
+        String query = "IPA";
+        final List<Beer> response = RULE.target("/beer/style").queryParam("q", query)
+                .request().get(new GenericType<List<Beer>>() {
+                });
+
+        assertThat(response).hasSize(0);
+    }
+
+    @Test
+    public void getStyleFound() {
+        String query = "whitbier";
+
+        final List<Beer> response = RULE.target("/beer/style").queryParam("q", query)
+                .request().get(new GenericType<List<Beer>>() {
+                });
+
+        assertThat(response).hasSize(2);
+    }
+
+    @Test
+    public void addBeer() {
+        Beer newBeer = new Beer(5, "Test Beer", "Sour", 5, 9.0);
+
+        when(BEER_SERVICE.addBeer(newBeer)).thenReturn("Added Beer with id=5");
+
+        Response response = RULE.target("/beer/save").request().post(Entity.json(newBeer), Response.class);
+
+        assertThat(response.getStatusInfo()).isEqualTo(Response.Status.OK);
     }
 }

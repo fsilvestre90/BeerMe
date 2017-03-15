@@ -1,25 +1,23 @@
 package com.filipesilvestre.beerme.core;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Beer {
     private int id;
     private String beerName;
-    private String style;
-    private int ibu;
+    private String beerStyle;
+    private int ibus;
     private double alcPercent;
 
     public Beer() {
         // Needed by Jackson deserialization
     }
 
-    public Beer(int id, String beerName, String style, int ibu, double alcPercent) {
+    public Beer(int id, String beerName, String beerStyle, int ibus, double alcPercent) {
         this.id = id;
         this.beerName = beerName;
-        this.style = style;
-        this.ibu = ibu;
+        this.beerStyle = beerStyle;
+        this.ibus = ibus;
         this.alcPercent = alcPercent;
     }
 
@@ -35,12 +33,12 @@ public class Beer {
 
     @JsonProperty
     public String getBeerStyle() {
-        return style;
+        return beerStyle;
     }
 
     @JsonProperty
     public int getIbus() {
-        return ibu;
+        return ibus;
     }
 
     @JsonProperty
