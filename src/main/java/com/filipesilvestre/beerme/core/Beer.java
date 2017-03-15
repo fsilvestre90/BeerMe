@@ -2,22 +2,44 @@ package com.filipesilvestre.beerme.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "beer")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = "com.filipesilvestre.beerme.core.Beer.findAll",
+                        query = "SELECT p FROM Beer p"
+                )
+        }
+)
 public class Beer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    
+    @Column(name = "beerName", nullable = false)
     private String beerName;
+    
+    @Column(name = "beerStyle", nullable = false)
     private String beerStyle;
-    private int ibus;
+    
+    @Column(name = "ibu", nullable = false)
+    private int ibu;
+
+    @Column(name = "alcPercent", nullable = false)
     private double alcPercent;
 
     public Beer() {
         // Needed by Jackson deserialization
     }
 
-    public Beer(int id, String beerName, String beerStyle, int ibus, double alcPercent) {
+    public Beer(int id, String beerName, String beerStyle, int ibu, double alcPercent) {
         this.id = id;
         this.beerName = beerName;
         this.beerStyle = beerStyle;
-        this.ibus = ibus;
+        this.ibu = ibu;
         this.alcPercent = alcPercent;
     }
 
@@ -37,8 +59,8 @@ public class Beer {
     }
 
     @JsonProperty
-    public int getIbus() {
-        return ibus;
+    public int getibu() {
+        return ibu;
     }
 
     @JsonProperty

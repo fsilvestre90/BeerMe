@@ -2,9 +2,12 @@ package com.filipesilvestre.beerme.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.List;
+
 public class Brewery {
     private int id;
     private String breweryName;
+    private List<Beer> beerList;
 
     public Brewery() {
         // Needed by Jackson deserialization
@@ -25,4 +28,12 @@ public class Brewery {
         return breweryName;
     }
 
+    @JsonProperty
+    public List<Beer> getBeerList() {
+        return beerList;
+    }
+
+    public void setBeerList(List<Beer> beerList) {
+        this.beerList = beerList;
+    }
 }
