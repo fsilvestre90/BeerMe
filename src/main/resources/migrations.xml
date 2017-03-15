@@ -43,5 +43,6 @@
     <changeSet author="filipesilvestre" id="add-data-external">
         <sqlFile path="beers.sql"/>
         <sqlFile path="brewery.sql"/>
+        <sqlFile path="map_beers_to_brewery.sql"/>
     </changeSet>
 </databaseChangeLog>

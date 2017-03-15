@@ -22,7 +22,7 @@ public class BreweryDAO extends AbstractDAO<Brewery> {
     }
 
     public List<Brewery> findAll() {
-        return list(namedQuery("findAll"));
+        return list(namedQuery("findAllBrewerys"));
     }
 
     // for future I would absolutely return a JSON message indicating user was deleted
