@@ -1,7 +1,9 @@
 package com.filipesilvestre.beerme.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Beer {
     private int id;
     private String beerName;
@@ -45,5 +47,6 @@ public class Beer {
     public double getAlcPercent() {
         return alcPercent;
     }
+
 }
 

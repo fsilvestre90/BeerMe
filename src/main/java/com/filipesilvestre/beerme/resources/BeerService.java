@@ -18,7 +18,7 @@ public class BeerService {
     @Timed
     @Path("/get/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Beer getBeer(@PathParam("id") int id) {
+    public Beer getBeerById(@PathParam("id") int id) {
         return BeerDB.getById(id);
     }
 
