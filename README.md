@@ -1,5 +1,17 @@
 # BeerMe
 
+# Introduction
+
+This project is for the Urban Airship interview project.
+
+# Overview
+
+I used the [Dropwizard](http://www.dropwizard.io/1.0.6/docs/) library because
+
+1) I did not want to reinvent the wheel
+
+2) it's features contain many libraries UA uses based on the job description
+
 How to start the BeerMe application
 ---
 
