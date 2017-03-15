@@ -46,4 +46,14 @@ public class BreweryService {
     public Brewery addBeer(@PathParam("id") int id, Beer beer) {
         return breweryDAO.addBeer(id, beer);
     }
+
+    @POST
+    @Timed
+    @Path("/save")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    @UnitOfWork
+    public Brewery addBrewery(Brewery brewery) {
+        return breweryDAO.create(brewery);
+    }
 }

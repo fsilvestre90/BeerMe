@@ -16,7 +16,6 @@ import java.util.Optional;
 import static io.dropwizard.testing.FixtureHelpers.fixture;
 import static junit.framework.TestCase.assertEquals;
 import static org.assertj.core.api.Java6Assertions.assertThat;
-import static org.hamcrest.CoreMatchers.instanceOf;
 
 /**
  * Created by filipesilvestre on 3/15/17.
