@@ -6,24 +6,36 @@ This project is for the Urban Airship interview project.
 
 # Overview
 
-I used the [Dropwizard](http://www.dropwizard.io/1.0.6/docs/) library because
-
-1) I did not want to reinvent the wheel
-
-2) it's features contain many libraries UA uses based on the job description
+I used the [Dropwizard](http://www.dropwizard.io/1.0.6/docs/) library to complete this excercise.
 
 How to start the BeerMe application
 ---
 
 1. Run `mvn clean install` to build your application
 1. Create DB with `java -jar target/BeerMe-1.0-SNAPSHOT.jar db migrate config.yml`
+
+1. If you want to skip those, just type `./clean` to kickstart a script which does that for you
+
 1. Start application with `java -jar target/BeerMe-1.0-SNAPSHOT.jar server config.yml`
 1. To check that the application is running enter url `http://localhost:9000`
 
+I'm new to dropwizard/building services in Java. When I first started, I wasn't aware of h2 database. I went back and rewrote the DAO classes to utilize the flexibility of a database.
 
-What I would change
+# If you had to do this project again, what would you do differently and why?
+    What I would change:
+    1) Better unit tests. I feel like I could get more granular if I mastered junit. I would also have more cases!
+    2) Better error handling/messaging. What if somebody didn't give a complete body for 'addBeer'? I would include a message indicating what the user missed
+    3) More endpoints. I spent a majority of my time learning this framework and configuration. Now that I understand this framework I build quicker!
 
-1) I would add a generator for test objects so changes would be propagated ONCE. I changed the model to include breweries and needed to modify the object creation in a few locations
-2) More unit tests!
-3) More in-depth unit tests!
-4) If I had more time I would add features to read/write to database
+
+#  What features did you choose to implement and why?
+
+    Features I chose:
+      1) Dropwizard: I did not want to reinvent the wheel or create my own service. This was a great tool to use! I was able to create config file, easily attach/detach endpoints, and more.
+
+      2) This projects features contain many libraries UA uses based on the job description. E.G. Jersey, Jackson, and Jetty.
+
+      3) When I first wrote the app I manually created objects instead of using a DB. This was bad and I didn't like it, so I went back and implemented Hibernate.
+            - I was able to create a migration file and sql scripts to create & populate the test database
+            - I could create a join table which tracked new beers that a brewery made
+
