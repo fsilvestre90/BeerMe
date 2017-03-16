@@ -8,7 +8,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 /**
- * This all reads from config.yml
+ * This configuration reads from config.yml
  */
 
 public class BeerMeConfiguration extends Configuration {

@@ -14,6 +14,9 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
 public class BeerMeApplication extends Application<BeerMeConfiguration> {
+    /**
+     * Create the Hibernate bundle. Associate all the models that will use this orm
+     */
     private final HibernateBundle<BeerMeConfiguration> hibernateBundle =
             new HibernateBundle<BeerMeConfiguration>(Beer.class, Brewery.class) {
                 @Override
@@ -26,6 +29,10 @@ public class BeerMeApplication extends Application<BeerMeConfiguration> {
         new BeerMeApplication().run(args);
     }
 
+    /**
+     * Initialize the project
+     * @param bootstrap
+     */
     @Override
     public void initialize(Bootstrap<BeerMeConfiguration> bootstrap) {
         bootstrap.addBundle(new MigrationsBundle<BeerMeConfiguration>() {
@@ -38,6 +45,12 @@ public class BeerMeApplication extends Application<BeerMeConfiguration> {
         bootstrap.addBundle(hibernateBundle);
     }
 
+    /**
+     * Create all the necessary objects. Here I create the web services and tell jersey about them.
+     * @param config
+     * @param environment
+     * @throws Exception
+     */
     @Override
     public void run(BeerMeConfiguration config, Environment environment) throws Exception {
         final BeerDAO beerDAO = new BeerDAO(hibernateBundle.getSessionFactory());

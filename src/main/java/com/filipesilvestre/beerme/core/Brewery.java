@@ -20,8 +20,11 @@ public class Brewery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(name = "brewery_name", nullable = false)
     private String breweryName;
+
+    // one-to-many table so we can get a list of beers associated to brewery
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "BREWERY_BEERS", joinColumns = { @JoinColumn(name = "BREWERY_ID") }, inverseJoinColumns = { @JoinColumn(name = "BEER_ID") })
     private List<Beer> beerList;
