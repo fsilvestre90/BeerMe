@@ -26,6 +26,8 @@ I'm new to dropwizard/building services in Java. When I first started, I wasn't 
     1) More unit tests. I feel like I could get more granular once I have more experience with junit. I would also have more cases!
     2) Better error handling/messaging. What if somebody didn't give a complete body for 'addBeer'? I would include a message indicating what the user missed
     3) More endpoints. I spent a majority of my time learning this framework and configuration. Now that I understand this framework, I can build the product quicker next time.
+    4) More filtering - find a beer based on a name
+    5) More fields - count of how many beers a brewery has, how many beers are in the collection, etc
 
 
 #  What features did you choose to implement and why?
@@ -39,3 +41,14 @@ I'm new to dropwizard/building services in Java. When I first started, I wasn't 
             - I was able to create a migration file and sql scripts to create & populate the test database
             - I could create a join table which tracked new beers that a brewery made
 
+
+# Endpoints
+    GET     /beer/all                    # Get all beers
+    GET     /beer/get/{id}               # Get a beer with ID
+    DELETE  /beer/remove/{id}            # Remove a beer with ID
+    POST    /beer/save                   # Add a new beer
+    GET     /beer/style?q={query}        # Filter beer based on a style
+    PUT     /brewery/addBeer/{id}        # Add a beer to the brewery
+    GET     /brewery/all                 # Get all breweries
+    POST    /brewery/save                # Add a new brewery
+    GET     /brewery/{id}                # Get a brewery on ID
