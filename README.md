@@ -33,7 +33,7 @@ I'm new to dropwizard/building services in Java. When I first started, I wasn't 
 #  What features did you choose to implement and why?
 
     Features I chose:
-      1) Dropwizard: I did not want to reinvent the wheel or create my own service. This was a great tool to use! I was able to create config file, easily attach/detach endpoints, and more.
+      1) Dropwizard: I did not want to reinvent the wheel. This was a great tool to use! I was able to create config file, easily attach/detach endpoints, and more. It's really stable.
 
       2) This projects features contain many libraries UA uses based on the job description. E.G. Jersey, Jackson, and Jetty.
 
