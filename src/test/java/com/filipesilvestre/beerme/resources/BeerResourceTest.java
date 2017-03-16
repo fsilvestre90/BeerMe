@@ -5,8 +5,8 @@ import com.filipesilvestre.beerme.core.BeerTest;
 import com.filipesilvestre.beerme.db.BeerDAO;
 import io.dropwizard.testing.junit.ResourceTestRule;
 
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -59,6 +59,15 @@ public class BeerResourceTest {
         assertEquals("Test Beer", beer.getBeerName());
     }
 
+    @Test
+    public void getByNonExistantBeerStyle() throws Exception {
+        List<Beer> beer = resources.client().target("/beer/style")
+                .queryParam("q", "Whitbier")
+                .request()
+                .get(new GenericType<List<Beer>>() {});
+
+        assertEquals(0, beer.size());
+    }
 
     @Test()
     public void add() throws Exception {

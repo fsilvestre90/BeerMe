@@ -23,9 +23,9 @@ I'm new to dropwizard/building services in Java. When I first started, I wasn't 
 
 # If you had to do this project again, what would you do differently and why?
     What I would change:
-    1) More unit tests. I feel like I could get more granular if I mastered junit. I would also have more cases!
+    1) More unit tests. I feel like I could get more granular once I have more experience with junit. I would also have more cases!
     2) Better error handling/messaging. What if somebody didn't give a complete body for 'addBeer'? I would include a message indicating what the user missed
-    3) More endpoints. I spent a majority of my time learning this framework and configuration. Now that I understand this framework I build quicker!
+    3) More endpoints. I spent a majority of my time learning this framework and configuration. Now that I understand this framework, I can build the product quicker next time.
 
 
 #  What features did you choose to implement and why?
@@ -35,7 +35,7 @@ I'm new to dropwizard/building services in Java. When I first started, I wasn't 
 
       2) This projects features contain many libraries UA uses based on the job description. E.G. Jersey, Jackson, and Jetty.
 
-      3) When I first wrote the app I manually created objects instead of using a DB. This was bad and I didn't like it, so I went back and implemented Hibernate.
+      3) When I first wrote the app I manually created objects instead of using a DB. I went back and implemented Hibernate.
             - I was able to create a migration file and sql scripts to create & populate the test database
             - I could create a join table which tracked new beers that a brewery made
 
